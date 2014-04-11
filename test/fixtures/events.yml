@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  location: MyString
+  description: MyText
+  eventdate: 2014-04-07
+  has_and_belongs_to_many: MyString
+  : 
+
+two:
+  title: MyString
+  location: MyString
+  description: MyText
+  eventdate: 2014-04-07
+  has_and_belongs_to_many: MyString
+  : 

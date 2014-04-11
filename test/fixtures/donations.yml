@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  donor: 1
+  amount: 1
+  date: 2014-03-22
+  note: MyString
+  member_id: 
+
+two:
+  donor: 1
+  amount: 1
+  date: 2014-03-22
+  note: MyString
+  member_id: 

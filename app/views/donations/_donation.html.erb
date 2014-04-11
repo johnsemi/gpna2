@@ -1,0 +1,16 @@
+<tr>
+<td>
+  <%= donation.amount %>
+</td>
+<td>
+  <%= donation.donationdate %>
+</td>
+<td>
+  <%= donation.note %>
+</td>
+<td>
+
+  <%= link_to 'Delete', [donation.member, donation],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</td></tr>
