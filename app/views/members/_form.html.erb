@@ -1,72 +1,78 @@
 <%= form_for @member, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label 'First Name', :class => 'control-label' %>
+    <%= f.label :membertype, :class => 'control-label' %>
+    <div class="controls">
+     <%= f.select :membertype, Member::MEMBER_TYPES, {}, {:id => 'memselect', :onchange => "updateMemberType()" } %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :firstname, :class => 'control-label', :id => 'namelabel' %>
     <div class="controls">
       <%= f.text_field :firstname, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label 'Last Name', :class => 'control-label' %>
+    <%= f.label :lastname, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :lastname, :class => 'text_field' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label 'Business/Organization Name', :class => 'control-label' %>
+  <div class="control-group toHide">
+    <%= f.label :orgname, :class => 'control-label', :id => 'orglabel' %>
     <div class="controls">
       <%= f.text_field :orgname, :class => 'text_field' %>
     </div>
   </div>
+    <div class="control-group">
+    <%= f.label :joindate, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :joindate, :class => 'text_field', 'data-behaviour' => 'datepicker' %>
+    </div>
+  </div>
   <div class="control-group">
-    <%= f.label 'Address', :class => 'control-label' %>
+    <%= f.label :address1, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :address1, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label 'Apt, #, Box', :class => 'control-label' %>
+    <%= f.label :address2, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :address2, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label 'City', :class => 'control-label' %>
+    <%= f.label :city, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :city, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label 'State', :class => 'control-label' %>
+    <%= f.label :state, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :state, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label 'ZIP', :class => 'control-label' %>
+    <%= f.label :zip, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :zip, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label 'Phone', :class => 'control-label' %>
+    <%= f.label :phone, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :phone, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label 'E-mail', :class => 'control-label' %>
+    <%= f.label :email, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :email, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label 'Member Type', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select(:membertype, options_for_select({ "Resident" => "1", "Business" => "2", "Organization" => "3"}, "1")) %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label 'Subscribe?', :class => 'control-label' %>
+    <%= f.label :subscribe, :class => 'control-label' %>
     <div class="controls">
       <%= f.check_box :subscribe, :class => 'text_field' %>
     </div>

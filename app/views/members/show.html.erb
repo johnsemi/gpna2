@@ -1,16 +1,21 @@
 <%- model_class = Member -%>
 <div class="page-header">
-  <!--<h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>-->
-  <h1><%= @member.firstname %> <%=@member.lastname %></h1>
+  <h1><%= @member.display_name %> </h1>
 </div>
 
 <dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:membertype) %>:</strong></dt>
+  <dd><%= Member::MEMBER_TYPES.key(@member.membertype) %> </dd>
   <dt><strong><%= model_class.human_attribute_name(:firstname) %>:</strong></dt>
   <dd><%= @member.firstname %></dd>
   <dt><strong><%= model_class.human_attribute_name(:lastname) %>:</strong></dt>
   <dd><%= @member.lastname %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:orgname) %>:</strong></dt>
-  <dd><%= @member.orgname %></dd>
+  <% if @member.membertype != 1 %>
+    <dt><strong><%= model_class.human_attribute_name(:orgname) %>:</strong></dt>
+    <dd><%= @member.orgname %></dd>
+  <% end %>
+  <dt><strong><%= model_class.human_attribute_name(:joindate) %>:</strong></dt>
+  <dd><%= @member.joindate %></dd>
   <dt><strong><%= model_class.human_attribute_name(:address1) %>:</strong></dt>
   <dd><%= @member.address1 %></dd>
   <dt><strong><%= model_class.human_attribute_name(:address2) %>:</strong></dt>
@@ -25,36 +30,9 @@
   <dd><%= @member.phone %></dd>
   <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
   <dd><%= @member.email %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:membertype) %>:</strong></dt>
-  <dd><%= @member.membertype %></dd>
   <dt><strong><%= model_class.human_attribute_name(:subscribe) %>:</strong></dt>
-  <dd><%= @member.subscribe %></dd>
+  <dd><%= Member::SUBSCRIBE_YN.key(@member.subscribe) %> </dd>
 </dl>
-
-
-<h2>Donations</h2> 
-<table class="table table-condensed">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Amount</th>
-      <th>Date</th>
-      <th>Note</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @member.donations.each do |donation| %>
-      <tr>
-        <td><%= donation.id %></td>
-        <td><%= donation.amount %></td>
-        <td><%= donation.donationdate %></td>
-        <td><%= donation.note %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
@@ -67,3 +45,62 @@
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
 </div>
+
+
+<h1>Donations</h1> 
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Amount</th>
+      <th>Note</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @member.donations.each do |donation| %>
+      <tr>
+        <td><%= donation.donationdate %></td>
+        <td><%= donation.amount %></td>
+        <td><%= donation.note %></td>
+         <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_member_donation_path(donation.member, donation), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      member_donation_path(donation.member, donation),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Add a donation:</h2>
+<%= form_for [@member, @member.donations.build], :html => { :class => 'form-horizontal' } do |f| %>
+<div class="control-group">
+    <%= f.label :amount, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :amount, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+      <%= f.label :donationdate, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :donationdate, :class => 'text_field', 'data-behaviour' => 'datepicker' %>
+   </div>
+   </div>
+  <div class="control-group">
+    <%= f.label :note, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :note, :class => 'text_field' %>
+    </div>
+  </div>
+   <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+  </div>
+<% end %>
+
+
+

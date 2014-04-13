@@ -1,3 +1,4 @@
+<%= javascript_include_tag "member_functions" %>
 <%- model_class = Member -%>
 <div class="page-header">
   <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
@@ -6,27 +7,3 @@
 
 
 
-<h2>Add a donation:</h2>
-<%= form_for [@member, @member.donations.build], :html => { :class => 'form-horizontal' } do |f| %>
-<div class="control-group">
-    <%= f.label 'Amount', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :amount, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-      <%= f.label 'Date', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :donationdate, :class => 'text_field', 'data-behaviour' => 'datepicker' %>
-   </div>
-   </div>
-  <div class="control-group">
-    <%= f.label 'Note', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :note, :class => 'text_field' %>
-    </div>
-  </div>
-   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-  </div>
-<% end %>

@@ -1,5 +1,6 @@
 class DonationsController < ApplicationController
-	 def create
+	 
+   def create
     	@member = Member.find(params[:member_id])
     	if @member.donations.create(params[:donation].permit(:amount, :donationdate, :note))
     		redirect_to member_path(@member), :notice => "Donation recorded."
@@ -11,6 +12,11 @@ class DonationsController < ApplicationController
 	def show
     	@member = Member.find(params[:member_id])
     	@donation = @member.donations.find(params[:id])
+    end
+
+  def edit
+      @member = Member.find(params[:member_id])
+      @donation = @member.donations.find(params[:id])
     end
 
   	def destroy

@@ -1,24 +1,24 @@
 <%= form_for @event, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label 'Event Title', :class => 'control-label' %>
+    <%= f.label :eventtitle, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :eventtitle, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label 'Location', :class => 'control-label' %>
+    <%= f.label :eventlocation, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :eventlocation, :class => 'text_field' %>
     </div>
   </div>
     <div class="control-group">
-    <%= f.label 'Date', :class => 'control-label' %>
+    <%= f.label :eventdate, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :eventdate, :class => 'text_field', 'data-behaviour' => 'datepicker' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label 'Description', :class => 'control-label' %>
+    <%= f.label :eventdescription, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :eventdescription, :class => 'text_area' %>
     </div>

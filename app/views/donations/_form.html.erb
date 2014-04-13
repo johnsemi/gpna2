@@ -1,21 +1,27 @@
 <%= form_for([@member, @member.donations.build]) do |f| %>
+  <div class="control-group">
+    <%= f.label :amount, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :amount, :class => 'text_field' %>
+    </div>
+  </div>
+    <div class="control-group">
+    <%= f.label :donationdate, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :donationdate, :class => 'text_field', 'data-behaviour' => 'datepicker' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :note, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :note, :class => 'text_field' %>
+    </div>
+  </div>
 
-  <p>
-    <%= f.label :amount %><br />
-    <%= f.text_field :amount %>
-  </p>
 
-   <p>
-    <%= f.label :donationdate %><br />
-    <%= f.text_field :donationdate %>
-  </p>
-
-    <p>
-    <%= f.label :note %><br />
-    <%= f.text_field :note %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                member_path(@member), :class => 'btn' %>
+  </div>
 <% end %>
