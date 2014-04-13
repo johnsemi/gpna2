@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140411023210) do
+ActiveRecord::Schema.define(version: 20140413215805) do
 
   create_table "donations", force: true do |t|
     t.integer  "amount"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140411023210) do
     t.integer  "subscribe"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "joindate"
   end
 
   create_table "users", force: true do |t|

@@ -21,3 +21,31 @@
 
 en:
   hello: "Hello world"
+
+  activerecord:
+    models:
+      member: Member
+    attributes:
+      member:
+        firstname: "First Name"
+        lastname: "Last Name"
+        orgname: "Org Name"
+        address1: "Address"
+        address2: "Apt, #, Box"
+        city: "City"
+        state: "State"
+        zip: "ZIP"
+        phone: "Phone"
+        email: "E-mail"
+        membertype: "Member Type"
+        subscribe: "Subscribe?"
+        joindate: "Join Date"
+      donation:
+        amount: "Amount"
+        donationdate: "Date"
+        note: "Note"
+      event:
+        eventtitle: "Event Name"
+        eventlocation: "Location"
+        eventdate: "Date"
+        eventdescription: "Description"

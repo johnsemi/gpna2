@@ -23,7 +23,6 @@ Gpna::Application.routes.draw do
 
   resources :events
 
-
   #members GET    /members(.:format)          members#index
 
   # The priority is based upon order of creation: first created -> highest priority.
