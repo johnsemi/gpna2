@@ -7,7 +7,38 @@
   <body>
     <h1>GPNA Membership Site</h1>
     <p>
-      Blah blah blah blah.
+      <h3>Blah blah blah blah. </h3>
+      Total Members: <%= @totalMembers %></br>
+  
+    
+      </br>
+      <h3>Newest Members</h3>
+      <table class="table table-condensed">
+      <tr>
+      <th>Member</th>
+      <th>Join Date</th>
+      </tr>
+      <% @newMembers.each do |mem| %>
+  		<tr>
+  		   <td><%= mem.display_name %></td>
+  		   <td><%= mem.joindate %></td>
+  		</tr>
+	  <% end %>
+       </table>
+
+       <h3>Upcoming Events</h3>
+       <table class="table table-condensed">
+      <tr>
+      <th>Event</th>
+      <th>Date</th>
+      </tr>
+      <% @upcomingEvents.each do |evt| %>
+  		<tr>
+  		   <td><%= evt.eventtitle %></td>
+  		   <td><%= evt.eventdate %></td>
+  		</tr>
+	  <% end %>
+       </table>
     </p>
   </body>
 </html>

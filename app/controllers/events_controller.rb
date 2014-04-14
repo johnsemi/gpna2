@@ -20,7 +20,7 @@ class EventsController < ApplicationController
 	end
 
 	def index
-  		@events = Event.all
+  		@events = Event.find(:all, :order => 'eventdate')
 	end
 
 	def edit

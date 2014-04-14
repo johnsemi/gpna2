@@ -1,5 +1,7 @@
 $(document).ready(function(){
    	$('.toHide').hide();
+    $("#phone").mask("(999)999-9999");
+    $("#zip").mask("99999");
     updateMemberType();
   });
 

@@ -9,8 +9,8 @@
       <th><%= model_class.human_attribute_name(:firstname) %></th>
       <th><%= model_class.human_attribute_name(:lastname) %></th>
       <th><%= model_class.human_attribute_name(:orgname) %></th>
-      
       <th><%= model_class.human_attribute_name(:membertype) %></th>
+      <th><%= model_class.human_attribute_name(:joindate) %></th>
       <th><%= model_class.human_attribute_name("Total Donations") %></th>
       
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -25,7 +25,9 @@
         <td><%= member.orgname %></td>
        
         <td><%= Member::MEMBER_TYPES.key(member.membertype) %></td>
+        <td><%= member.joindate %></td>
         <td><%= member.total_donations %></td>
+
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_member_path(member), :class => 'btn btn-mini' %>

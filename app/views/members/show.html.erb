@@ -47,7 +47,7 @@
 </div>
 
 
-<h1>Donations</h1> 
+<h3>Donations</h3> 
 <table class="table table-condensed">
   <thead>
     <tr>
@@ -58,7 +58,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @member.donations.each do |donation| %>
+    <% @member.donations.order("donationdate asc").each do |donation| %>
       <tr>
         <td><%= donation.donationdate %></td>
         <td><%= donation.amount %></td>

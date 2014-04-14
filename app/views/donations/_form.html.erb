@@ -2,13 +2,13 @@
   <div class="control-group">
     <%= f.label :amount, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :amount, :class => 'text_field' %>
+      <%= f.text_field :amount, :required => true, :class => 'text_field' %>
     </div>
   </div>
     <div class="control-group">
     <%= f.label :donationdate, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :donationdate, :class => 'text_field', 'data-behaviour' => 'datepicker' %>
+      <%= f.text_field :donationdate, :required => true, :class => 'text_field', 'data-behaviour' => 'datepicker' %>
     </div>
   </div>
   <div class="control-group">

@@ -4,6 +4,10 @@ class Member < ActiveRecord::Base
 	validates :firstname, presence: true,
                     length: { minimum: 1 }
 
+    def firstname=(s)
+        super s.titleize
+    end
+    
     def total_donations
  		 self.donations.sum(:amount)
 	end
@@ -14,9 +18,9 @@ class Member < ActiveRecord::Base
 
     def display_name
         if membertype == 1
-            return "#{firstname} #{lastname}"
+            return "#{firstname.titleize} #{lastname.titleize}"
         else
-            return "#{firstname} #{lastname} (#{orgname})"
+            return "#{firstname.titleize} #{lastname.titleize} (#{orgname.titleize})"
         end
     end
 

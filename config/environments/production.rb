@@ -30,6 +30,7 @@ Gpna::Application.configure do
   config.assets.compile = true
 
   config.assets.precompile += %w( member_functions.js )
+  config.assets.precompile += %w( jquery.maskedinput.js )
 
   # Generate digests for assets URLs.
   config.assets.digest = true

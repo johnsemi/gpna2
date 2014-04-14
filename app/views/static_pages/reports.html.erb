@@ -9,5 +9,32 @@
     <p>
       This is where reports will go. Hope I get to it.
     </p>
+    <h3>Donation Totals</h3>
+    <h2>Monthly Donations</h2>
+      <table class="table table-condensed">
+      <% @monthly_donations.each do |month, stats| %>
+	  <tr>
+	    <td> <%= month %> </td>
+	    <td>
+	      <% count_array = stats.collect{|i| i.amount}%>
+	      <%= count_array.sum %>
+	    </td>
+	  <tr>
+	<% end %>
+       </table>
+
+	<h2>Yearly Donations</h2>
+      <table class="table table-condensed">
+      <% @yearly_donations.each do |year, stats| %>
+	  <tr>
+	    <td> <%= year %> </td>
+	    <td>
+	      <% count_array = stats.collect{|i| i.amount}%>
+	      <%= count_array.sum %>
+	    </td>
+	  <tr>
+	<% end %>
+       </table>
+
   </body>
 </html>

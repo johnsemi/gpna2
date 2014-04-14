@@ -8,13 +8,13 @@
   <div class="control-group">
     <%= f.label :firstname, :class => 'control-label', :id => 'namelabel' %>
     <div class="controls">
-      <%= f.text_field :firstname, :class => 'text_field' %>
+      <%= f.text_field :firstname, :required => true, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :lastname, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :lastname, :class => 'text_field' %>
+      <%= f.text_field :lastname, :required => true, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group toHide">
@@ -26,7 +26,7 @@
     <div class="control-group">
     <%= f.label :joindate, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :joindate, :class => 'text_field', 'data-behaviour' => 'datepicker' %>
+      <%= f.text_field :joindate, :required => true, :class => 'text_field', 'data-behaviour' => 'datepicker' %>
     </div>
   </div>
   <div class="control-group">
@@ -50,25 +50,26 @@
   <div class="control-group">
     <%= f.label :state, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :state, :class => 'text_field' %>
+     <!-- <%= f.text_field :state, :id => "state", :class => 'text_field' %>-->
+      <%= f.select(:state, options_for_select(us_states, "MI")) %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :zip, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :zip, :class => 'text_field' %>
+      <%= f.text_field :zip, :id => "zip", :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :phone, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :phone, :class => 'text_field' %>
+      <%= f.text_field :phone, :id => "phone", :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :email, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :email, :class => 'text_field' %>
+      <%= f.text_field :email, :pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}', :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
