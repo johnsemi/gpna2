@@ -74,33 +74,15 @@
         </td>
       </tr>
     <% end %>
+    <tr class="info">
+          <td><strong>Total Donations</strong></td>
+          <td><strong><%= @member.total_donations %></strong></td>
+          <td></td>
+          <td></td>
+    </tr>
   </tbody>
 </table>
 
-<h2>Add a donation:</h2>
-<%= form_for [@member, @member.donations.build], :html => { :class => 'form-horizontal' } do |f| %>
-<div class="control-group">
-    <%= f.label :amount, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :amount, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-      <%= f.label :donationdate, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :donationdate, :class => 'text_field', 'data-behaviour' => 'datepicker' %>
-   </div>
-   </div>
-  <div class="control-group">
-    <%= f.label :note, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :note, :class => 'text_field' %>
-    </div>
-  </div>
-   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-  </div>
-<% end %>
-
-
-
+<div class="form-actions">
+<%= link_to('Add Donation', new_member_donation_path(@member), class: 'btn btn-primary')  %>
+</div>

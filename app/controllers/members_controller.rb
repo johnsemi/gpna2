@@ -37,7 +37,7 @@ class MembersController < ApplicationController
 	 # @member = Member.find(params[:id])
 	 
 	  if @member.update(member_params) #params[:member].permit(:firstname, :lastname, :address1))
-	    redirect_to members_path, :notice => "Member was updated."
+	    redirect_to @member, :notice => "Member was updated."
 	    #redirect_to @member
 	  else
 	    render 'edit'
