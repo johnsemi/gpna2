@@ -21,7 +21,8 @@
   $(document).ready(function(){
   	//$.fn.datepicker.defaults.format = "mm/dd/yyyy";
     $('[data-behaviour~=datepicker]').datepicker({
-    	  format: 'yyyy-mm-dd'
+    	  format: 'yyyy-mm-dd',
+    	  autoclose: true
     });
   })
 

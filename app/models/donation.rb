@@ -5,4 +5,9 @@ class Donation < ActiveRecord::Base
   def donation_month
      self.donationdate.month
   end	
+
+  def donation_year
+     self.donationdate.year
+  end	
+
 end

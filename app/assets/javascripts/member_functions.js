@@ -1,5 +1,6 @@
 $(document).ready(function(){
    	$('.toHide').hide();
+    updateMemberType();
   });
 
 function updateMemberType(){
