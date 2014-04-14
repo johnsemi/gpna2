@@ -22,7 +22,8 @@
   	//$.fn.datepicker.defaults.format = "mm/dd/yyyy";
     $('[data-behaviour~=datepicker]').datepicker({
     	  format: 'yyyy-mm-dd',
-    	  autoclose: true
+    	  autoclose: true,
+    	  todayHighlight: true
     });
   })
 
