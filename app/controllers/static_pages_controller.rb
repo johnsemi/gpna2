@@ -4,6 +4,9 @@ class StaticPagesController < ApplicationController
 
      #@newMembers = Member.find(:all, :order => 'joindate', :limit => 10)
   	 @newMembers = Member.order(joindate: :desc).limit(10)
+  	 @YTDMembers = Member.where(['joindate > ?', DateTime.now.beginning_of_year])
+
+  	 @YTDDonations = Donation.where(['donationdate > ?', DateTime.now.beginning_of_year])
 
 
 	#@donations = Donation.group("donationdate").select("DATE_FORMAT(donationdate, '%Y-%m') AS d_month, sum(amount) AS d_total")

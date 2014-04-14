@@ -1,4 +1,5 @@
 <% provide(:title, 'Reports') %>
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -32,6 +33,11 @@
 	  <tr>
 	<% end %>
        </table>
+
+       
+        <%= pie_chart Member.group(:membertype).count %>
+
+<%= column_chart Donation.group_by_year(:donationdate).sum(:amount) %>
 
   </body>
 </html>

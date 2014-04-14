@@ -65,3 +65,9 @@ gem "twitter-bootstrap-rails"
 gem 'bootstrap-datepicker-rails'
 
 gem 'jquery-turbolinks'
+
+gem "chartkick"
+
+gem 'groupdate',
+  :git => 'git://github.com/mieko/groupdate.git',
+  :branch => 'sqlite3'

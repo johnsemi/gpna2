@@ -8,12 +8,13 @@
     <h1>GPNA Membership Site</h1>
     <p>
       <h3>Blah blah blah blah. </h3>
-      Total Members: <%= @totalMembers %></br>
-  
+       Total Members: <%= @totalMembers %></br>
+  	   YTD New Members: <%= @YTDMembers.count %></br>
+  	   YTD Donations: <%= @YTDDonations.sum('amount') %></br>
     
       </br>
       <h3>Newest Members</h3>
-      <table class="table table-condensed">
+      <table class="table table-responsive">
       <tr>
       <th>Member</th>
       <th>Join Date</th>
@@ -27,15 +28,15 @@
        </table>
 
        <h3>Upcoming Events</h3>
-       <table class="table table-condensed">
+       <table class="table table-responsive">
       <tr>
       <th>Event</th>
       <th>Date</th>
       </tr>
       <% @upcomingEvents.each do |evt| %>
   		<tr>
-  		   <td><%= evt.eventtitle %></td>
-  		   <td><%= evt.eventdate %></td>
+  		   <td><%= evt.eventtitle %> </td>
+  		   <td><%= evt.eventdate.strftime("%B %e") %> </td>
   		</tr>
 	  <% end %>
        </table>
