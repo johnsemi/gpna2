@@ -1,9 +1,10 @@
 Gpna::Application.routes.draw do
 
   root  'static_pages#home'
-  match '/help',    to: 'static_pages#help',    via: 'get'
-  #match '/about',   to: 'static_pages#about',   via: 'get'
+  match '/about',   to: 'static_pages#about',   via: 'get'
   match '/reports', to: 'static_pages#reports', via: 'get'
+
+  match '/developers', to: 'static_pages#developers', via: 'get'
 
   #devise_for :users do
   #  get "/", :to => "devise/sessions#new"
