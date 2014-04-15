@@ -24,6 +24,12 @@ Gpna::Application.routes.draw do
 
   resources :events
 
+  get 'chart/yearly_donations' => 'charts#yearly_donations', :as => :yearly_donations_charts
+
+  get 'chart/member_types' => 'charts#member_types', :as => :member_types_charts
+
+  get 'chart/yearly_members' => 'charts#yearly_members', :as => :yearly_members_charts
+
   #members GET    /members(.:format)          members#index
 
   # The priority is based upon order of creation: first created -> highest priority.

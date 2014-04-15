@@ -35,7 +35,9 @@
        </table>
 
        
-        <%= pie_chart Member.group(:membertype).count %>
+        <%= pie_chart member_types_charts_path, colors: ["#449BF3","#6C9C0E","#9B4379","#CD4536"] %>
+
+<%= column_chart yearly_donations_charts_path, colors: ["#449BF3","#6C9C0E","#9B4379","#CD4536"] %>
 
 <%= column_chart Donation.group_by_year(:donationdate).sum(:amount) %>
 
