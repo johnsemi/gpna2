@@ -1,8 +1,6 @@
 class MembersController < ApplicationController
-
-
 	before_action :get_member, only: [:show, :edit, :update, :destroy]
-
+  
 	 def get_member
 	 	@member = Member.find(params[:id])
 	 end
@@ -30,6 +28,15 @@ class MembersController < ApplicationController
 	end
 
 	def index
+		#@members = Member.find(
+        #     :all, 
+        #     :select => "members.*, CASE WHEN membertype = 1 THEN
+        #   	      lastname + ', ' + firstname
+        #      ELSE
+        #        orgname + ' (' + firstname + ' ' + lastname + ')'
+        #       END as listing_name",
+        #     :order  => params[:sort]
+#)
   		@members = Member.all
 	end
 
@@ -53,7 +60,7 @@ class MembersController < ApplicationController
 	end
 
 	private
-  		def member_params
+  	def member_params
     	params.require(:member).permit(:firstname, :lastname, :orgname, :joindate, :address1, :address2, :city, :state, :zip, :phone, :email, :membertype, :subscribe)
   	end
 

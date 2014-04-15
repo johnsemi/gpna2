@@ -7,14 +7,23 @@
   <body>
   <div class="container-fluid">
   <div class="row-fluid">
-    <h1>GPNA Membership Site</h1>
-       <h3>Blah blah blah blah. </h3>
-       <p>
-       Total Members: <%= @totalMembers %></br>
-  	   YTD New Members: <%= @YTDMembers.count %></br>
-  	   YTD Donations: <%= @YTDDonations.sum('amount') %></br>
-    	</p>
-      </br>
+    <h1>Garfield Park Neighborhoods Association</h1>
+       </div>
+       <div class="row-fluid">
+       <div class="span4 pagination-centered">
+       <h2>Total members</h2>
+       <span id="sumnum-1"><%= @totalMembers %></span>
+       </div>
+       <div class="span4 pagination-centered">
+       <h2>YTD New Members</h2>
+       <span id="sumnum-2"><%= @YTDMembers.count %></span>
+       </div>
+       <div class="span4 pagination-centered">
+  	   <h2>YTD Donations</h2>
+  	   <span id="sumnum-3"> $<%= @YTDDonations.sum('amount') %></span>
+  	   </div>
+    </div>
+    </br></br>
       </div>
       <div class="row-fluid">
 

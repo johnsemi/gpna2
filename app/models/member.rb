@@ -4,6 +4,8 @@ class Member < ActiveRecord::Base
 	validates :firstname, presence: true,
                     length: { minimum: 1 }
 
+    attr_reader :listing_name
+
     def firstname=(s)
         super s.titleize
     end
@@ -28,7 +30,15 @@ class Member < ActiveRecord::Base
         if membertype == 1
             return "#{firstname.titleize} #{lastname.titleize}"
         else
-            return "#{firstname.titleize} #{lastname.titleize} (#{orgname.titleize})"
+            return "#{orgname.titleize} (#{firstname.titleize} #{lastname.titleize})"
+        end
+    end
+
+    def listing_name
+        if membertype == 1
+            return "#{lastname.titleize}, #{firstname.titleize}"
+        else
+            return "#{orgname.titleize} (#{firstname.titleize} #{lastname.titleize})"
         end
     end
 
