@@ -2,34 +2,34 @@ class ChartsController < ApplicationController
 	def yearly_donations
 		@donations = Donation.find(:all, :order => 'donationdate')
 		@yearly_donations = @donations.group_by(&:year)
-		@gd = Hash.new
+
+		@yearly_donations_sum = Hash.new
 		@yearly_donations.each do |year, stats|  
-		    count_array = stats.collect{|i| i.amount}
-		    @gd[year] = count_array.sum 
+	  	  	count_array = stats.collect{|i| i.amount}
+	    	@yearly_donations_sum[year] = count_array.sum 
 		end
-		render :json => @gd
-  end
-
-
-
-def yearly_donations_new
-  @donations = Donation.includes(:amount, :donationdate).group(&:year).sum("amount")
-  respond_to do |format|
-    format.html
-    format.json do
-      render :json => custom_json_for(@donations)
-    end
-  end
-end
-
-
+		render :json => @yearly_donations_sum
+  	end
 
   	def member_types
-    	render json: Member.group(:membertype).count
-  end
+  		@all_members = Member.group(:membertype).count
+		@membertype_sum = Hash.new
+		@all_members.each do |type, count|  
+			typename = Member::MEMBER_TYPES.key(type)
+	    	@membertype_sum[typename] = count 
+		end
+    	render json: @membertype_sum
+  	end
 
   def yearly_members
-  	render json: Member.group_by_year(:joindate).count
+	  	@members = Member.select("id", "joindate")
+		@yearly_joins = @members.group_by(&:year)
+		@yearly_joins_sum = Hash.new
+		@yearly_joins.each do |year, stats|  
+		    count_array = stats.collect{|i| i.id}
+		    @yearly_joins_sum[year] = count_array.count 
+		end
+		render json: @yearly_joins_sum
   end
 
 

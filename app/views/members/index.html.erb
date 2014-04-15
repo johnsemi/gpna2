@@ -26,7 +26,7 @@
        
         <td><%= Member::MEMBER_TYPES.key(member.membertype) %></td>
         <td><%= member.joindate %></td>
-        <td><%= member.total_donations %></td>
+        <td>$ <%= member.total_donations %></td>
 
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

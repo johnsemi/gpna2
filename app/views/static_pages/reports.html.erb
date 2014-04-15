@@ -7,16 +7,12 @@
   </head>
   <body>
     <h1>GPNA Membership Site</h1>
+   <div class="container-fluid">
+  <div class="row-fluid">
     <h3>Donation Totals</h3>
-    <h2>Monthly Donations</h2>
-      <table class="table table-condensed">
-      <% @monthly_donations_sum.each do |month, total| %>
-	  <tr>
-	    <td> <%= month %> </td>
-	    <td> <%= total %></td>
-	  <tr>
-	<% end %>
-       </table>
+    </div>
+    <div class="row-fluid">
+    <div class="span6">
 
 	<h2>Yearly Donations</h2>
       <table class="table table-condensed">
@@ -24,27 +20,44 @@
 	  <tr>
 	    <td> <%= year %> </td>
 	    <td> <%= total %></td>
-	  <tr>
+	  </tr>
 	<% end %>
        </table>
+       </div>
 
-    <%= column_chart @yearly_donations_sum, colors: ["#449BF3","#6C9C0E","#9B4379","#CD4536"] %>
+	<div class="span6">
+    <%= column_chart yearly_donations_chart_path, colors: ["#449BF3","#6C9C0E","#9B4379","#CD4536"] %>
+    </div>
+    </div>
+  <div class="row-fluid">
+    <h2>Monthly Donations</h2>
+      <table class="table table-condensed">
+      <% @monthly_donations_sum.each do |month, total| %>
+	  <tr>
+	    <td> <%= month %> </td>
+	    <td> <%= total %></td>
+	  </tr>
+	<% end %>
+       </table>
+       </div>
 
-
+  <div class="row-fluid">
   <h3>Member Stats</h3>
+  </div>
+    <div class="row-fluid">
+  <div class="span6">
     <h2>Member Types</h2>
 
-    <%= pie_chart @membertype_sum, colors: ["#449BF3","#6C9C0E","#9B4379","#CD4536"] %>
-    
+    <%= pie_chart member_types_chart_path, colors: ["#449BF3","#6C9C0E","#9B4379","#CD4536"] %>
+    </div>
+    <div class="span6">
     <h2>New Members per Year</h2>
-    <%= column_chart @yearly_joins_sum, colors: ["#449BF3","#6C9C0E","#9B4379","#CD4536"] %>
-
-	<%= @yearly_joins_sum %>
-
+    <%= column_chart yearly_members_chart_path, colors: ["#449BF3","#6C9C0E","#9B4379","#CD4536"] %>
+</div>
+</div>
 
 	<%= @yearly_donations_sum %>
-
-	<%= @membertype_sum %>
-
+</div>
+</div>
   </body>
 </html>

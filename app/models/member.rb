@@ -8,6 +8,14 @@ class Member < ActiveRecord::Base
         super s.titleize
     end
     
+    def lastname=(s)
+        super s.titleize
+    end
+
+    def orgname=(s)
+        super s.titleize
+    end
+
     def total_donations
  		 self.donations.sum(:amount)
 	end
