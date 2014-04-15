@@ -24,6 +24,10 @@ class Member < ActiveRecord::Base
         end
     end
 
+    def year
+     self.joindate.strftime("%G")
+    end
+
     MEMBER_TYPES = {'Resident' => 1, 'Business' => 2, 'Organization' => 3}
 
     SUBSCRIBE_YN = {'No' => 0, 'Yes' => 1}

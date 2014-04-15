@@ -10,36 +10,41 @@
     <h3>Donation Totals</h3>
     <h2>Monthly Donations</h2>
       <table class="table table-condensed">
-      <% @monthly_donations.each do |month, stats| %>
+      <% @monthly_donations_sum.each do |month, total| %>
 	  <tr>
 	    <td> <%= month %> </td>
-	    <td>
-	      <% count_array = stats.collect{|i| i.amount}%>
-	      <%= count_array.sum %>
-	    </td>
+	    <td> <%= total %></td>
 	  <tr>
 	<% end %>
        </table>
 
 	<h2>Yearly Donations</h2>
       <table class="table table-condensed">
-      <% @yearly_donations.each do |year, stats| %>
+      <% @yearly_donations_sum.each do |year, total| %>
 	  <tr>
 	    <td> <%= year %> </td>
-	    <td>
-	      <% count_array = stats.collect{|i| i.amount}%>
-	      <%= count_array.sum %>
-	    </td>
+	    <td> <%= total %></td>
 	  <tr>
 	<% end %>
        </table>
 
-       
-        <%= pie_chart member_types_charts_path, colors: ["#449BF3","#6C9C0E","#9B4379","#CD4536"] %>
+    <%= column_chart @yearly_donations_sum, colors: ["#449BF3","#6C9C0E","#9B4379","#CD4536"] %>
 
-<%= column_chart yearly_donations_charts_path, colors: ["#449BF3","#6C9C0E","#9B4379","#CD4536"] %>
 
-<%= column_chart Donation.group_by_year(:donationdate).sum(:amount) %>
+  <h3>Member Stats</h3>
+    <h2>Member Types</h2>
+
+    <%= pie_chart @membertype_sum, colors: ["#449BF3","#6C9C0E","#9B4379","#CD4536"] %>
+    
+    <h2>New Members per Year</h2>
+    <%= column_chart @yearly_joins_sum, colors: ["#449BF3","#6C9C0E","#9B4379","#CD4536"] %>
+
+	<%= @yearly_joins_sum %>
+
+
+	<%= @yearly_donations_sum %>
+
+	<%= @membertype_sum %>
 
   </body>
 </html>

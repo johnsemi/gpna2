@@ -2,14 +2,12 @@ class ChartsController < ApplicationController
 	def yearly_donations
 		@donations = Donation.find(:all, :order => 'donationdate')
 		@yearly_donations = @donations.group_by(&:year)
-		#render json: @yearly_donations.sum(:amount)
-    	render json: Donation.group_by_year(:donationdate).sum(:amount)
-    	#@donations_array = Array.new()
-		#@yearly_donations.each do |year, stats| 
-	  	#	count_array = stats.collect{|i| i.amount}
-	  	#	@donations_array = @donations_array << {year => count_array.sum}
-		#end
-		#render json: @donations_array
+		@gd = Hash.new
+		@yearly_donations.each do |year, stats|  
+		    count_array = stats.collect{|i| i.amount}
+		    @gd[year] = count_array.sum 
+		end
+		render :json => @gd
   end
 
 
