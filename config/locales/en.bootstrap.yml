@@ -16,3 +16,5 @@ en:
       save: "Save %{model}"
       new: "New %{model}"
       delete: "Delete %{model}"
+
+    

@@ -1,83 +1,33 @@
-<%= form_for @member, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :membertype, :class => 'control-label' %>
-    <div class="controls">
-     <%= f.select :membertype, Member::MEMBER_TYPES, {}, {:id => 'memselect', :onchange => "updateMemberType()" } %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :firstname, :class => 'control-label', :id => 'namelabel' %>
-    <div class="controls">
-      <%= f.text_field :firstname, :required => true, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :lastname, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :lastname, :required => true, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group toHide">
-    <%= f.label :orgname, :class => 'control-label', :id => 'orglabel' %>
-    <div class="controls">
-      <%= f.text_field :orgname, :class => 'text_field' %>
-    </div>
-  </div>
-    <div class="control-group">
-    <%= f.label :joindate, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :joindate, :required => true, :class => 'text_field', 'data-behaviour' => 'datepicker' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :address1, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :address1, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :address2, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :address2, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :city, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :city, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :state, :class => 'control-label' %>
-    <div class="controls">
-     <!-- <%= f.text_field :state, :id => "state", :class => 'text_field' %>-->
-      <%= f.select(:state, options_for_select(us_states, "MI")) %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :zip, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :zip, :id => "zip", :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :phone, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :phone, :id => "phone", :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :email, :pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}', :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :subscribe, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :subscribe, :class => 'text_field' %>
-    </div>
-  </div>
+<%= simple_form_for(@member, html: {class: 'form-horizontal' }) do |f| %>
+
+    <%= f.input :membertype, collection: Member::MEMBER_TYPES, :include_blank => false, input_html: { id: 'memselect', onchange: "updateMemberType()" } %>
+
+    <%= f.input :firstname, label_html: { id: 'namelabel'} %>
+   
+   <%= f.input :lastname, label_html: { id: 'lnamelabel'}  %>
+
+   <div class="toHide">
+   <%= f.input :orgname, label_html: { id: 'orglabel'} %>
+   </div>
+
+  <%= f.input :joindate, :as => :string, :input_html => { data: {behaviour: "datepicker"} }, label_html: {id: 'datepicker'}  %>
+  
+  <%= f.input :address1 %>
+
+  <%= f.input :address2 %>
+
+ <%= f.input :city %>
+
+ <%= f.input :state, collection: us_states %>
+
+ <%= f.input :zip, input_html: { id: 'zip' } %>
+ 
+  <%= f.input :phone, input_html: { id: 'phone' } %>
+
+  <%= f.input :email, as: :email %>
+
+<%= f.input :subscribe, as: :boolean %>
+
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

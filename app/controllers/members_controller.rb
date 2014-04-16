@@ -7,6 +7,8 @@ class MembersController < ApplicationController
 
 	def new
 		@member = Member.new
+		@member.state = 'MI'
+		@member.membertype = 1
 	end
 
   	def create

@@ -1,8 +1,14 @@
 class Member < ActiveRecord::Base
 	has_many :donations, dependent: :destroy
 	has_and_belongs_to_many :events
-	validates :firstname, presence: true,
-                    length: { minimum: 1 }
+	validates :firstname, presence: true, length: { minimum: 1 }
+    validates :lastname, presence: true
+    validates :email, :format => { :with => /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/ ,
+                     :message => 'Please provide a valid e-mail address'},
+        :allow_blank => true
+    validates :joindate, presence: true
+    validates_presence_of :orgname, :if => :is_biz?
+    validates_presence_of :email, :if => :is_subscribed?
 
     attr_reader :listing_name
 
@@ -32,6 +38,14 @@ class Member < ActiveRecord::Base
         else
             return true
         end
+    end
+
+    def is_biz?
+        !(membertype == 1)
+    end
+
+    def is_subscribed?
+        subscribe == 1
     end
 
     scope :expired, -> { where(self.donations.maximum(:created_at) > (Time.now - (365*24*60*60))) }

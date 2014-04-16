@@ -49,3 +49,13 @@ en:
         eventlocation: "Location"
         eventdate: "Date"
         eventdescription: "Description"
+    errors:
+      models:
+        member:
+          attributes:
+            email:
+              blank: "Required if subscribing."
+            orgname:
+              blank: "Required for Businesses and Organizations."
+      messages:
+          blank: "Required."

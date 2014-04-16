@@ -73,3 +73,4 @@ gem 'groupdate',
   :git => 'git://github.com/mieko/groupdate.git',
   :branch => 'sqlite3'
 
+gem 'simple_form'
