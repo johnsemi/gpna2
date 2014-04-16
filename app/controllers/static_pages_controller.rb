@@ -46,12 +46,21 @@ class StaticPagesController < ApplicationController
 	end
   end
 
-def inactivemembers
-	@members = Member.expired
-  	@member_list = Hash.new
-	@members.each do |m|  
-	    @member_list[m.display_name] = m.last_donation 
-	end
+def newmembers
+  		@all_members = Member.group(:membertype).count
+		@membertype_sum = Hash.new
+		@all_members.each do |type, count|  
+			typename = Member::MEMBER_TYPES.key(type)
+	    	@membertype_sum[typename] = count 
+		end
+
+	  	@member_joins = Member.select("id", "joindate")
+		@yearly_joins = @member_joins.group_by(&:year)
+		@yearly_joins_sum = Hash.new
+		@yearly_joins.each do |year, stats|  
+		    count_array = stats.collect{|i| i.id}
+		    @yearly_joins_sum[year] = count_array.count 
+		end
   end
 
 end

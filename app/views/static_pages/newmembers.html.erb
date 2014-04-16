@@ -1,4 +1,5 @@
-<% provide(:title, 'Reports - Inactive') %>
+<% provide(:title, 'Reports - Members') %>
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,11 +20,13 @@
   <div class="span6">
     <h2>Member Types</h2>
 
-    <%= pie_chart member_types_chart_path, colors: ["#449BF3","#6C9C0E","#9B4379","#CD4536"] %>
+    <!--<%= pie_chart member_types_chart_path, colors: ["#449BF3","#6C9C0E","#9B4379","#CD4536"] %>-->
+    <%= pie_chart @member_types_sum, colors: ["#449BF3","#6C9C0E","#9B4379","#CD4536"] %>
     </div>
     <div class="span6">
     <h2>New Members per Year</h2>
-    <%= column_chart yearly_members_chart_path, colors: ["#9B4379","#CD4536"] %>
+    <!--<%= column_chart yearly_members_chart_path, colors: ["#9B4379","#CD4536"] %>-->
+    <%= column_chart @yearly_joins_sum, colors: ["#9B4379","#CD4536"] %>
 </div>
 </div>
 
