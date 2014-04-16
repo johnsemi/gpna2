@@ -68,6 +68,8 @@ gem 'jquery-turbolinks'
 
 gem "chartkick"
 
+#some guy's branch which supports sqlite too
 gem 'groupdate',
   :git => 'git://github.com/mieko/groupdate.git',
   :branch => 'sqlite3'
+

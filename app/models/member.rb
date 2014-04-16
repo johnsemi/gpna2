@@ -26,6 +26,18 @@ class Member < ActiveRecord::Base
  		 self.donations.maximum(:created_at)
 	end
 
+    def is_expired
+        if self.last_donation > (Time.now - (365*24*60*60))
+            return false
+        else
+            return true
+        end
+    end
+
+    scope :expired, -> { where(self.donations.maximum(:created_at) > (Time.now - (365*24*60*60))) }
+
+    scope :subscribed, -> { where(subscribe: 1) }
+
     def display_name
         if membertype == 1
             return "#{firstname.titleize} #{lastname.titleize}"

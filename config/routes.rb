@@ -3,6 +3,8 @@ Gpna::Application.routes.draw do
   root  'static_pages#home'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/reports', to: 'static_pages#reports', via: 'get'
+  match '/subscriptions', to: 'static_pages#subscriptions', via: 'get'
+  match '/newmembers', to: 'static_pages#newmembers', via: 'get'
 
   match '/developers', to: 'static_pages#developers', via: 'get'
 

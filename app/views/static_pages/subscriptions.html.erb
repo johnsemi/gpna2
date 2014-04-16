@@ -1,0 +1,27 @@
+<% provide(:title, 'Reports - Subscriptions') %>
+<!DOCTYPE html>
+<html>
+  <head>
+   
+  </head>
+  <body>
+    <h1>Reports</h1>
+    <ul class="nav nav-tabs">
+  <li><%= link_to 'Donations',  '/reports' %></li>
+    <li><%= link_to 'Members',  '/newmembers' %></li>
+  <li class="active"><%= link_to 'Subscriptions',  '/subscriptions' %></li>
+</ul>
+
+	<h3>Email List</h3></br>
+      <table class="table table-condensed">
+      <% @member_emails.each do |m, e| %>
+	  <tr>
+	    <td> <%= m %> </td>
+	    <td> <%= e %></td>
+	  </tr>
+	<% end %>
+       </table>
+       </div>
+
+  </body>
+</html>

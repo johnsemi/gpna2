@@ -8,9 +8,6 @@ class StaticPagesController < ApplicationController
 
   	 @YTDDonations = Donation.where(['donationdate > ?', DateTime.now.beginning_of_year])
 
-
-	#@donations = Donation.group("donationdate").select("DATE_FORMAT(donationdate, '%Y-%m') AS d_month, sum(amount) AS d_total")
-
 	 @upcomingEvents = Event.where(['eventdate > ?', DateTime.now]).order(eventdate: :asc).limit(5)
   end
 
@@ -35,5 +32,26 @@ class StaticPagesController < ApplicationController
 	    count_array = stats.collect{|i| i.amount}
 	    @monthly_donations_sum[month] = count_array.sum 
 	end
+
+	@MTDDonations = Donation.where(['donationdate > ?', DateTime.now.beginning_of_month])
+
   end
+
+  def subscriptions
+  	#@members = Member.where(['subscribe = 1'])
+  	@members = Member.subscribed
+  	@member_emails = Hash.new
+	@members.each do |m|  
+	    @member_emails[m.display_name] = m.email 
+	end
+  end
+
+def inactivemembers
+	@members = Member.expired
+  	@member_list = Hash.new
+	@members.each do |m|  
+	    @member_list[m.display_name] = m.last_donation 
+	end
+  end
+
 end

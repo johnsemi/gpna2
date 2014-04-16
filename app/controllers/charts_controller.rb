@@ -6,7 +6,7 @@ class ChartsController < ApplicationController
 		@yearly_donations_sum = Hash.new
 		@yearly_donations.each do |year, stats|  
 	  	  	count_array = stats.collect{|i| i.amount}
-	    	@yearly_donations_sum[year] = count_array.sum 
+	    	@yearly_donations_sum[year] = count_array.sum
 		end
 		render :json => @yearly_donations_sum
   	end
