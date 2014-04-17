@@ -4,14 +4,10 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 <div class="row-fluid">
-<div class="span8 offset2">
+<div class="span10 offset1">
 <table class="table table-striped">
   <thead>
     <tr>
-      <!--<th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:firstname) %></th>
-      <th><%= model_class.human_attribute_name(:lastname) %></th>
-      <th><%= model_class.human_attribute_name(:orgname) %></th>-->
       <th>Name</th>
       <th><%= model_class.human_attribute_name(:membertype) %></th>
       <th><%= model_class.human_attribute_name(:joindate) %></th>
@@ -24,10 +20,6 @@
     <% @members.each do |member| %>
       <tr>
         <td><%= link_to member.listing_name, member_path(member) %></td>
-        <!--<td><%= member.firstname %></td>
-        <td><%= member.lastname %></td>
-        <td><%= member.orgname %></td>-->
-       
         <td><%= Member::MEMBER_TYPES.key(member.membertype) %></td>
         <td><%= member.joindate %></td>
         <td>$<%= member.total_donations %></td>
@@ -44,7 +36,7 @@
 </div>
 </div>
 <div class="row-fluid">
-<div class="span8 offset2">
+<div class="span10 offset1">
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_member_path,
             :class => 'btn btn-primary' %>

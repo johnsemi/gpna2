@@ -2,6 +2,8 @@ class EventsController < ApplicationController
 
 	before_action :get_event, only: [:show, :edit, :update, :destroy]
 
+  	respond_to :html, :json, :xml
+
 	 def get_event
 	 	@event = Event.find(params[:id])
 	 end
@@ -12,8 +14,11 @@ class EventsController < ApplicationController
 
 	def create
 	  @event = Event.new(event_params)
-	  @event.save
-	  redirect_to @event
+ 	 	if @event.save
+    		respond_with @event, :notice => "Event was saved."
+ 		 else
+    		render 'new'
+  		end
 	end
  
  	def show
@@ -21,6 +26,7 @@ class EventsController < ApplicationController
 
 	def index
   		@events = Event.find(:all, :order => 'eventdate')
+  		respond_with @events
 	end
 
 	def edit
@@ -28,7 +34,7 @@ class EventsController < ApplicationController
 
 	def update
 	  if @event.update(event_params) 
-	  	    redirect_to events_path, :notice => "Event was updated."
+	  	   respond_with @event, :notice => "Event was updated."
 	  else
 	    render 'edit'
 	  end
@@ -37,7 +43,10 @@ class EventsController < ApplicationController
 	def destroy
 	  @event.destroy
 	 
-	  redirect_to events_path, :notice => "Event has been deleted."
+	  	respond_to do |format|
+			format.html { redirect_to events_path, :notice => "Event has been deleted."}
+	  		format.json { head :ok }
+	  	end
 
 	end
 

@@ -1,12 +1,24 @@
 class MembersController < ApplicationController
 	before_action :get_member, only: [:show, :edit, :update, :destroy]
   
+  	respond_to :html, :json, :xml
+
 	 def get_member
 	 	@member = Member.find(params[:id])
 	 end
 
+	def index
+  		@members = Member.all
+  		respond_with @members
+	end
+
+	def show
+  		respond_with @member
+	end
+
 	def new
 		@member = Member.new
+		#Default selections for drop-downs, only applies to NEW
 		@member.state = 'MI'
 		@member.membertype = 1
 	end
@@ -15,49 +27,31 @@ class MembersController < ApplicationController
   		@member = Member.new(member_params)
  	
  	 	if @member.save
-    		redirect_to @member, :notice => "Member was saved."
+    		respond_with @member, :notice => "Member was saved."
  		 else
     		render 'new'
   		end
 	end
- 
- 	def show
-  		#@member = Member.find(params[:id])
-	end
+
 
 	def edit
-  		#@member = Member.find(params[:id])
-	end
-
-	def index
-		#@members = Member.find(
-        #     :all, 
-        #     :select => "members.*, CASE WHEN membertype = 1 THEN
-        #   	      lastname + ', ' + firstname
-        #      ELSE
-        #        orgname + ' (' + firstname + ' ' + lastname + ')'
-        #       END as listing_name",
-        #     :order  => params[:sort]
-#)
-  		@members = Member.all
 	end
 
 	def update
-	 # @member = Member.find(params[:id])
-	 
-	  if @member.update(member_params) #params[:member].permit(:firstname, :lastname, :address1))
-	    redirect_to @member, :notice => "Member was updated."
-	    #redirect_to @member
-	  else
-	    render 'edit'
-	  end
+		if @member.update(member_params) 
+		    respond_with @member, :notice => "Member was updated."
+		else
+		    render 'edit'
+		end
 	end
 
 	def destroy
-	  #@member = Member.find(params[:id])
 	  @member.destroy
 	 
-	  redirect_to members_path, :notice => "Member has been deleted."
+		respond_to do |format|
+			format.html { redirect_to members_path, :notice => "Member has been deleted."}
+	  		format.json { head :ok }
+	  	end
 
 	end
 

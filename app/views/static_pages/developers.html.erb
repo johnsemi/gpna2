@@ -1,12 +1,43 @@
 <% provide(:title, 'Developers') %>
-<!DOCTYPE html>
-<html>
-  <head>
-  </head>
-  <body>
-    <p>
-      <h3>Blah blah blah blah. </h3>
-  
-    </p>
-  </body>
-</html>
+  <div class="container-fluid">
+  <div class="page-header">
+    <h1>Developers</h1>
+       </div>
+       <div class="row-fluid">    
+      <h3>Base URL</h3>
+  <div class="highlight-python"><pre>http://gpnamasterc1e0.ninefold-apps.com</pre></div>
+  </div></br>
+   <div class="row-fluid"> 
+  <h3>Authentication</h3>
+  <p>For the time being, authentication is only required to create, update, or delete objects. Users that have logged in through a browser can access these methods. Otherwise, all GET requests are available without authentication.</p>
+    </div></br>
+ <div class="row-fluid"> 
+  <h3>Formats</h3>
+  <p>Data is available as HTML, JSON, and XML. </p>
+    </div></br>
+     <div class="row-fluid"> 
+  <h3>Endpoints</h3>
+  <ul>
+  <li>/members.{format}</li>
+  <li>/members/{memberid}.{format}</li>
+  <li>/members/{memberid}/donations.{format}</li>
+  <li>/events.{format}</li>
+  </ul>
+    </div></br>
+     <div class="row-fluid"> 
+  <h3>Examples</h3>
+  <p>Request:</p>
+   <div class="highlight-python"><pre>http://gpnamasterc1e0.ninefold-apps.com/members/3.json</pre></div>
+   <p>Result:</p>
+    <div class="highlight-json"><pre>{"id":3,"firstname":"Ray","lastname":"Johnson","orgname":"Ray's Ribs","address1":"222 Burton","address2":"","city":"Grand Rapids","state":"MI","zip":49503,"phone":"(616)222-3333","email":"rar@raysribs.com","membertype":2,"subscribe":1,"created_at":"2014-03-23T23:00:28.180Z","updated_at":"2014-04-17T04:17:11.773Z","joindate":"2014-04-02"}</pre></div></br>
+    <p>Request:</p>
+   <div class="highlight-python"><pre>http://gpnamasterc1e0.ninefold-apps.com/members/3/donations.json</pre></div>
+   <p>Result:</p>
+    <div class="highlight-json"><pre>[{"id":10,"amount":60,"date":null,"note":"test","member_id":3,"created_at":"2014-03-25T02:52:09.844Z","updated_at":"2014-04-14T02:05:19.819Z","donationdate":"2014-04-02"}]</pre></div></br>
+    <p>Request:</p>
+   <div class="highlight-python"><pre>http://gpnamasterc1e0.ninefold-apps.com/events.json</pre></div>
+   <p>Result:</p>
+    <div class="highlight-json"><pre>[{"id":6,"eventtitle":"Easter Egg Hunt","eventlocation":"Garfield Park","eventdescription":"Fun for all","eventdate":"2014-04-23","created_at":"2014-04-08T17:54:50.147Z","updated_at":"2014-04-08T17:55:05.839Z"},{"id":11,"eventtitle":"Sample Event","eventlocation":"Your house","eventdescription":"","eventdate":"2014-11-04","created_at":"2014-03-21T01:48:22.133Z","updated_at":"2014-03-21T01:50:03.949Z"}]</pre></div>
+</div>
+    </div>
+

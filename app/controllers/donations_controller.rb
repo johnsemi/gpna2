@@ -1,4 +1,6 @@
 class DonationsController < ApplicationController
+    respond_to :html, :json, :xml
+
 	 def new
     @member = Member.find(params[:member_id])
     @donation = Donation.new
@@ -23,10 +25,16 @@ class DonationsController < ApplicationController
       end
   end
 
+  def index
+      @member = Member.find(params[:member_id])
+      @donations = @member.donations
+      respond_with @donations
+  end
 
 	def show
     	@member = Member.find(params[:member_id])
     	@donation = Donation.new
+      respond_with @donation
     end
 
   def edit
