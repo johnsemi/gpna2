@@ -9,11 +9,8 @@
   <%= favicon_link_tag 'favicon.ico' %>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-
 </head>
 <body>
-
-
 
 <% if notice %>
   <p class="alert alert-notice"><%= notice %></p>
@@ -21,12 +18,6 @@
 <% if alert %>
   <p class="alert alert-error"><%= alert %></p>
 <% end %>
-
-<!--
-<% flash.each do |key, value| %>
-	<p> <%= value %></p>
-<% end %>
--->
 
 <%= render 'layouts/header' %>
 

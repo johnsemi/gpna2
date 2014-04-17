@@ -74,3 +74,5 @@ gem 'groupdate',
   :branch => 'sqlite3'
 
 gem 'simple_form'
+
+gem 'fullcalendar-rails'

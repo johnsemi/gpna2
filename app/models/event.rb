@@ -13,4 +13,11 @@ class Event < ActiveRecord::Base
      read_attribute(:eventlocation).try(:titleize)
   end
 
+	def as_json options={}
+	 {
+	   title: eventtitle,
+	   start: eventdate
+	 }
+	end
+
 end

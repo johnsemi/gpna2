@@ -8,7 +8,7 @@ class MembersController < ApplicationController
 	 end
 
 	def index
-  		@members = Member.all
+  		@members = Member.order('UPPER(CASE membertype WHEN 1 THEN lastname ELSE orgname END) asc')
   		respond_with @members
 	end
 

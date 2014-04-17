@@ -76,14 +76,4 @@ class Member < ActiveRecord::Base
 
     SUBSCRIBE_YN = {'No' => 0, 'Yes' => 1}
         
-	#@@member_types = {"key1" => "text 1", "key2" => "text2"}
-	#@@member_types = { 1 => 'Resident', 2 => 'Business', 3 => 'Organization'}
-   
-    #def membertype_text
-    #  @@member_types[membertype]
-    #end
-
-    #def self.member_type_select
-    #  @@member_types.invert
-    #end
 end

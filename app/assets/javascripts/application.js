@@ -16,15 +16,19 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require bootstrap-datepicker
+//= require fullcalendar
 //= require_tree .
 //<script type="text/javascript">
   $(document).ready(function(){
-  	//$.fn.datepicker.defaults.format = "mm/dd/yyyy";
     $('[data-behaviour~=datepicker]').datepicker({
     	  format: 'yyyy-mm-dd',
     	  autoclose: true,
     	  todayHighlight: true
     });
+
+    $('#calendar').fullCalendar({
+        events: '/events.json'
+    })
   })
 
 
